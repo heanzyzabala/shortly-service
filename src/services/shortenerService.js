@@ -4,10 +4,9 @@ class ShortenerServive {
     this.codeSupplier = codeSupplier;
   }
 
-  shorten = (url, cb) => {
+  generate = (url, cb) => {
     const code = this.codeSupplier();
     this.redisClient.set(code, url, (err, result) => {
-      console.log(`Generated code: ${code}`);
       cb(err, result, code);
     });
   }
