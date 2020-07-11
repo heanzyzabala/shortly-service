@@ -7,6 +7,7 @@ class ShortenerServive {
   shorten = (url, cb) => {
     const code = this.codeSupplier();
     this.redisClient.set(code, url, (err, result) => {
+      console.log(`Generated code: ${code}`);
       cb(err, result, code);
     });
   }
@@ -17,4 +18,5 @@ class ShortenerServive {
     });
   }
 }
+
 module.exports = ShortenerServive;
