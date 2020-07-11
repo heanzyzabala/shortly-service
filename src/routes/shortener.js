@@ -14,15 +14,15 @@ router.post('/shorten', (req, res) => {
 });
 
 router.get('/:code', (req, res) => {
-    shortenerService.get(req.params.code, (err, result) => {
+    shortenerService.get(req.params.code, (err, value) => {
         if (err) {
             console.error(JSON.stringify(err));
             return res.status(500).json({ 'error': 'Internal Server Error' });
         }
-        if (!result) {
+        if (!value) {
             return res.sendStatus(404);
         }
-        return res.redirect(result);
+        return res.redirect(value);
     });
 });
 
