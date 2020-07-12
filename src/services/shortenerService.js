@@ -1,14 +1,13 @@
 class ShortenerServive {
-  constructor(redisClient, host, codeSupplier) {
+  constructor(redisClient, codeSupplier) {
     this.redisClient = redisClient;
-    this.host = host;
     this.codeSupplier = codeSupplier;
   }
 
   generate = (url, cb) => {
     const code = this.codeSupplier();
     this.redisClient.set(code, url, (err, result) => {
-      cb(err, result, `${this.host}/${code}`);
+      cb(err, result, code);
     });
   }
 
