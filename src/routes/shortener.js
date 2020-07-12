@@ -4,8 +4,6 @@ const router = express.Router();
 const shortenerService = require('../config/shortenerServiceConfig');
 
 router.post('/shorten', (req, res) => {
-    console.info('Request received: POST /shorten');
-    console.info(JSON.stringify(req.body));
     shortenerService.generate(req.body.url, (err, result, code) => {
         if (err) {
             console.error(JSON.stringify(err));
@@ -16,8 +14,6 @@ router.post('/shorten', (req, res) => {
 });
 
 router.get('/:code', (req, res) => {
-    console.info('Request received: GET /:code');
-    console.info(JSON.stringify(req.params));
     shortenerService.get(req.params.code, (err, value) => {
         if (err) {
             console.error(JSON.stringify(err));
