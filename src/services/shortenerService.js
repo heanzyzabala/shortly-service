@@ -1,21 +1,12 @@
 class ShortenerServive {
-  constructor(redisClient, codeSupplier) {
-    this.redisClient = redisClient;
+  constructor(urlRepo, codeSupplier) {
+    this.urlRepo = urlRepo;
     this.codeSupplier = codeSupplier;
   }
 
-  generate = (url, cb) => {
-    const code = this.codeSupplier();
-    this.redisClient.set(code, url, (err, result) => {
-      cb(err, result, code);
-    });
-  }
+  generate = async (url) => this.urlRepo.insert({ code: this.codeSupplier(), url });
 
-  get = (code, cb) => {
-    this.redisClient.get(code, (err, value) => {
-      cb(err, value);
-    });
-  }
+  get = async (code) => this.urlRepo.findOne({ code });
 }
 
 module.exports = ShortenerServive;
