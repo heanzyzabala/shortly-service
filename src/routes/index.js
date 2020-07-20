@@ -2,6 +2,6 @@ const express = require('express');
 const shortenerRouter = require('./shortener');
 
 const router = express.Router();
-router.use('/api', shortenerRouter);
+router.use('/shortly', shortenerRouter);
 
 module.exports = router;

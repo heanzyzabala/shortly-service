@@ -6,7 +6,7 @@ const shortenerService = require('../config/shortenerServiceConfig');
 const urlSchema = require('../schemas/url');
 
 router.post('/shorten', async (req, res) => {
-  const { url } = req.body.url;
+  const { url } = req.body;
   const isValid = await urlSchema.isValid({ url });
   if (!isValid) {
     return res.status(422).json({ error: 'Invalid URL' });
