@@ -1,5 +1,5 @@
 {
-  "name": "url-shortener-service",
+  "name": "shortly-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heanzyzabala/url-shortener-service.git"
+    "url": "git+https://github.com/heanzyzabala/shortly-service.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/heanzyzabala/url-shortener-service/issues"
+    "url": "https://github.com/heanzyzabala/shortly-service/issues"
   },
-  "homepage": "https://github.com/heanzyzabala/url-shortener-service#readme",
+  "homepage": "https://github.com/heanzyzabala/shortly-service#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
