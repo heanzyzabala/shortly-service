@@ -1,7 +1,7 @@
-const urlModel = require('../config/url.model');
-const codeSupplier = require('../config/code.supplier');
+const urlModel = require('../models/url.model');
+const codeSupplier = require('../code.supplier');
 
 module.exports = {
-    generate: async (url) => urlModel.save({ code: codeSupplier.get(), url }),
-    get: async (code) => urlModel.get({ code }),
+    async generate(url) { return urlModel.save({ code: codeSupplier.get(), url }); },
+    async get(code) { return urlModel.get({ code }); },
 };

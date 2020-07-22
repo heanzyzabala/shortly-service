@@ -13,4 +13,4 @@ app.use(express.json());
 app.use(cors());
 app.use(routes);
 // eslint-disable-next-line no-console
-app.listen(process.env.PORT, () => console.log(`Listening to port ${process.env.PORT}`));
+module.exports = app.listen(process.env.PORT, () => console.log(`Listening to port ${process.env.PORT}`));

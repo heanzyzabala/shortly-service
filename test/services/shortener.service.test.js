@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-undef */
-const chai = require('chai');
 const sinon = require('sinon');
+const { expect } = require('chai');
 
-const { expect } = chai;
-
-const codeSupplier = require('../../src/config/code.supplier');
-const urlModel = require('../../src/config/url.model');
+const codeSupplier = require('../../src/code.supplier');
+const urlModel = require('../../src/models/url.model');
 const service = require('../../src/services/shortener.service');
 
 describe('shortener', () => {
@@ -22,6 +20,18 @@ describe('shortener', () => {
             expect(userModelSpy.calledWith({
                 code: '123456',
                 url: 'http://google.com',
+            }));
+        });
+    });
+    describe('#get', () => {
+        it('should return url', async () => {
+            const urlModelSpy = sinon.spy(urlModel, 'get');
+
+            await service.get('123456');
+
+            expect(urlModelSpy.calledOnce).to.be.true;
+            expect(urlModelSpy.calledWith({
+                code: '123456',
             }));
         });
     });
