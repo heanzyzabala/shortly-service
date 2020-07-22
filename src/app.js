@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const routes = require('./routes');
 
 const app = express();
+app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(express.json());
 app.use(cors());
