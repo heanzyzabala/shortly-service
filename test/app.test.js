@@ -58,7 +58,7 @@ describe('app', () => {
                     expect(res.status).to.be.equal(200);
                     expect(res.body).to.have.property('url');
                     expect(res.body.url).to.be.equal('http://google.com');
-                    
+
                     return done();
                 });
         });
