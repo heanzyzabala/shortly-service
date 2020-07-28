@@ -35,4 +35,32 @@ describe('app', () => {
                 });
         });
     });
+    describe('GET /:code', () => {
+        let code;
+        it('should successfully get link', (done) => {
+            request(app)
+                .post('/shortly/shorten')
+                .send({ url: 'http://google.com' })
+                .end((err, res) => {
+                    if (err) return done(err);
+
+                    expect(res.status).to.be.equal(201);
+                    expect(res.body).to.have.property('code');
+
+                    code = res.body.code;
+                    return done();
+                });
+            request(app)
+                .get(`/shortly/${code}`)
+                .end((err, res) => {
+                    if (err) return done(err);
+
+                    expect(res.status).to.be.equal(200);
+                    expect(res.body).to.have.property('url');
+                    expect(res.body.url).to.be.equal('http://google.com');
+                    
+                    return done();
+                });
+        });
+    });
 });
