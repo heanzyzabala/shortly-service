@@ -39,7 +39,7 @@ describe('app', () => {
         let code;
         it('should successfully get link', (done) => {
             request(app)
-                .post('/shortly/shorten')
+                .post('/shorten')
                 .send({ url: 'http://google.com' })
                 .end((err, res) => {
                     if (err) return done(err);
@@ -51,7 +51,7 @@ describe('app', () => {
                     return done();
                 });
             request(app)
-                .get(`/shortly/${code}`)
+                .get(`/${code}`)
                 .end((err, res) => {
                     if (err) return done(err);
 
