@@ -5,7 +5,7 @@ const router = express.Router();
 const shortener = require('../services/shortener.service');
 const urlSchema = require('../schemas/url');
 
-router.post('/shorten', async (req, res) => {
+router.post('/api/shorten', async (req, res) => {
     const { url } = req.body;
     const isValid = await urlSchema.isValid({ url });
     if (!isValid) {
