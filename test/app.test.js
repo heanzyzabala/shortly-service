@@ -9,7 +9,7 @@ describe('app', () => {
     describe('POST /shorten', () => {
         it('should successfully generate code', (done) => {
             request(app)
-                .post('/shortly/shorten')
+                .post('/api/shorten')
                 .send({ url: 'http://google.com' })
                 .end((err, res) => {
                     if (err) return done(err);
@@ -22,7 +22,7 @@ describe('app', () => {
         });
         it('should return error when url format is invalid', (done) => {
             request(app)
-                .post('/shortly/shorten')
+                .post('/api/shorten')
                 .send({ url: 'invalid url' })
                 .end((err, res) => {
                     if (err) return done(err);
@@ -39,7 +39,7 @@ describe('app', () => {
         let code;
         it('should successfully get link', (done) => {
             request(app)
-                .post('/shorten')
+                .post('/api/shorten')
                 .send({ url: 'http://google.com' })
                 .end((err, res) => {
                     if (err) return done(err);
@@ -51,7 +51,7 @@ describe('app', () => {
                     return done();
                 });
             request(app)
-                .get(`/${code}`)
+                .get(`/api/${code}`)
                 .end((err, res) => {
                     if (err) return done(err);
 
