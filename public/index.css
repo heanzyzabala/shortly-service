@@ -1,9 +1,0 @@
-html, body {
-    height: 100vh;
-    min-height: 100vh;
-    margin: 0px;
-}
-
-div#root {
-    height: 100vh;
-}
