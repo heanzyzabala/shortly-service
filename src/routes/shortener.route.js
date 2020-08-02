@@ -17,7 +17,7 @@ router.post('/shorten', async (req, res) => {
 
 router.get('/:code', async (req, res) => {
     const { url } = await shortener.get(req.params.code);
-    if (!url) {
+    if (url === null) {
         return res.status(404).json({ error: 'Not Found' });
     }
     return res.redirect(url);
