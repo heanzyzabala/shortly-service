@@ -11,7 +11,7 @@ describe('shortener', () => {
     describe('#generate', () => {
         it('should generate code', async () => {
             const codeSupplierStub = sinon.stub(codeSupplier, 'get').returns('123456');
-            const userModelSpy = sinon.spy(urlModel, 'save');
+            const userModelSpy = sinon.spy(urlModel, 'create');
 
             await service.generate('http://google.com');
 
@@ -25,7 +25,7 @@ describe('shortener', () => {
     });
     describe('#get', () => {
         it('should return url', async () => {
-            const urlModelSpy = sinon.spy(urlModel, 'get');
+            const urlModelSpy = sinon.spy(urlModel, 'findOne');
 
             await service.get('123456');
 

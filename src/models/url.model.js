@@ -1,8 +1,12 @@
-const urls = require('monk')('localhost/shortly-db').get('urls');
+const mongoose = require('mongoose');
 
-module.exports = {
-    async save(code, url) {
-        return urls.insert({ code, url });
-    },
-    async get(code) { return urls.findOne({ code }); },
-};
+const { Schema } = mongoose;
+const { DB_HOST, DB_PORT, DB_NAME } = process.env;
+mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const schema = new Schema({
+    code: String,
+    url: String,
+});
+
+module.exports = mongoose.model('Url', schema);
