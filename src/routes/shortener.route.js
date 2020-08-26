@@ -1,13 +1,13 @@
 const express = require('express');
 
 const router = express.Router();
+const validator = require('validator');
 
 const shortener = require('../services/shortener.service');
-const urlSchema = require('../schemas/url');
 
 router.post('/shorten', async (req, res) => {
     const { url } = req.body;
-    const isValid = await urlSchema.isValid({ url });
+    const isValid = validator.isURL(url);
     if (!isValid) {
         return res.status(422).json({ error: 'Invalid URL' });
     }
