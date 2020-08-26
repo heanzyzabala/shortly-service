@@ -4,6 +4,7 @@ const router = express.Router();
 const validator = require('validator');
 
 const shortener = require('../services/shortener.service');
+const { sanitize } = require('../sanitizer');
 
 router.post('/shorten', async (req, res) => {
     const { url } = req.body;
@@ -11,7 +12,8 @@ router.post('/shorten', async (req, res) => {
     if (!isValid) {
         return res.status(422).json({ error: 'Invalid URL' });
     }
-    const result = await shortener.generate(url);
+
+    const result = await shortener.generate(sanitize(url));
     return res.status(201).json({ code: result.code });
 });
 
