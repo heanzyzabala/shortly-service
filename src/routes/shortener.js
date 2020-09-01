@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 
-const shortener = require('../services/shortener.service');
-const { sanitize } = require('../sanitizer');
+const { shortener } = require('../services');
+const { sanitize } = require('../utilities');
 
 router.post('/shorten', async (req, res) => {
     const { url } = req.body;
