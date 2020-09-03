@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-require('dotenv').config();
+const env = require('dotenv').config();
+
+if (env.error) {
+    throw env.error;
+}
 
 const express = require('express');
 const cors = require('cors');

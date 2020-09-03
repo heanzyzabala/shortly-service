@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test node_modules/mocha/bin/mocha test/* --exit",
+    "test": "NODE_ENV=test mocha test/* --exit",
     "dev": "nodemon src/app"
   },
   "repository": {
@@ -33,6 +33,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "mocha": "^8.0.1",
+    "nodemon": "^2.0.4",
     "sinon": "^9.0.2",
     "supertest": "^4.0.2"
   }
